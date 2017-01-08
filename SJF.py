@@ -14,7 +14,6 @@ for i in range(process_number):
 
 array.sort(key=lambda array:array[2])
 
-
 j = 1
 service_time.append(0)
 waiting_time.append(service_time[0] + array[0][1])
