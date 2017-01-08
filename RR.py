@@ -47,4 +47,4 @@ for i in range(process_number):
     print (array[i][0], '\t\t\t\t', array[i][1], '\t\t\t\t', array[i][2], '\t\t\t\t', waiting_time[i], '\t\t\t\t', turnaround_time[i])
     wait_sum += waiting_time[i]
 
-print ('Average Waiting Time : ',(wait_sum/process_number))
+print ('Average Waiting Time : ',(wait_sum/(process_number*1.0)))
