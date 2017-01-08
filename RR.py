@@ -1,6 +1,6 @@
 array = []
 wait_sum = 0.0
-total = 0
+total_burst_time = 0
 waiting_time = []
 finish_time = []
 burst_time_counter = []
@@ -20,7 +20,7 @@ array .sort(key = lambda array :(array [1],array [process_number]))
 
 for i in range(process_number):
     finish_time.append(0)
-    total += array [i][2]
+    total_burst_time += array [i][2]
     burst_time_counter.append(array [i][2])
     waiting_time.append(0)
 
