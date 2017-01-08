@@ -1,37 +1,38 @@
-arr = []
-wait_time = 0.0
-n = int(input('Enter the No. of Process : '))
+array = []
+turnaround_time=[]
+wait_sum = 0.0
+process_number = int(input('Enter the number of processes: '))
 
-for i in range(n):
-    arr.append([])
-    print (' ')
-    arr[i].append(input('Enter Process Name : ' ))
-    arr[i].append(int(input('Enter Arrival Time ')))
-    arr[i].append(int(input('Enter Burst Time :')))
-    print (' ')
+for i in range(process_number):
+    array.append([])
+    array[i].append(input('Process Name: '))
+    array[i].append(int(input('Process Arrival Time: ')))
+    array[i].append(int(input('Process Burst Time:')))
+    print('\n')
 
 
-arr.sort(key=lambda arr:arr[1])
+array.sort(key=lambda array:array[1])
 
-wait = []
+waiting_time = []
 j = 1
-service = []
-service.append(arr[0][1])
-wait.append(service[0] - arr[0][1])
+service_time = []
+service_time.append(array[0][1])
+waiting_time.append(service_time[0] - array[0][1])
+turnaround_time.append(waiting_time[0]+array[0][2])
 
 
-while j < n:
-    service.append(service[j-1] + arr[j-1][2])
-    if service[j] < arr[j][1]:
-        wait.append(0)
+while j < process_number:
+    service_time.append(service_time[j-1] + array[j-1][2])
+    if service_time[j] < array[j][1]:
+        waiting_time.append(0)
     else:
-        wait.append(service[j] - arr[j][1])
-    wait_time += wait[j]
+        waiting_time.append(service_time[j] - array[j][1])
+    turnaround_time.append(waiting_time[j] + array[j][2])
+    wait_sum += waiting_time[j]
     j += 1
 
-print ('Process Name \tArrival Time \t Burst Time \t Service Time \t Waiting Time')
-for i in range(n):
-    print (arr[i][0], '\t\t\t\t', arr[i][1], '\t\t\t\t', arr[i][2], '\t\t\t\t', service[i], '\t\t\t\t', wait[i])
+print ('Process Name \tArrival Time \t Burst Time \t Turnaround Time \t Waiting Time')
+for i in range(process_number):
+    print (array[i][0], '\t\t\t\t', array[i][1], '\t\t\t\t', array[i][2], '\t\t\t\t\t', turnaround_time[i], '\t\t\t\t', waiting_time[i])
 
-print ('Total Waiting Time : ', wait_time)
-print ('Average Waiting Time : ', (wait_time/(n*1.0)))
+print('Average Waiting Time : ', (wait_sum/(process_number*1.0)))
